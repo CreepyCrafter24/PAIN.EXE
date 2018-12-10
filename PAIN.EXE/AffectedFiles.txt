@@ -1,0 +1,21 @@
+﻿Files:
+	shell:startup\Pain.exe
+	%appdata%\Pain.exe
+	%temp%\Pain.exe
+Registry:
+	SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+		PainAppData
+		PainTemp
+	SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+		PainAppData
+		PainTemp
+	SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run
+		PainAppData
+		PainTemp
+	SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows\load
+		PainAppData
+		PainTemp
+	SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer
+		NoWinKeys
+	SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+		DisableTaskMgr
