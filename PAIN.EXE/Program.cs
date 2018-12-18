@@ -59,7 +59,7 @@ namespace PAIN.EXE {
                     Environment.Exit(0);
                 }
                 else
-                    MessageBox.Show("Correct. Executing...", "PAIN.EXE");
+                    MessageBox.Show("Correct. Executing...", "PAIN.EXE Unpacker");
                 if (MessageBox.Show("This software might make your machine unoperable!\r\nDo you want to continue?", "PAIN.EXE", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     Environment.Exit(0);
                 if (MessageBox.Show("This is the last warning! The author is not responsible for any damage this software causes!\r\nDo you want to continue?", "PAIN.EXE", MessageBoxButtons.YesNo) != DialogResult.Yes)
